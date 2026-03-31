@@ -5,28 +5,42 @@
                 "operations": {
                     "contactsList": {
                         "method": "get",
-                        "verb": "post",
                         "call": {
-                            "path": "/CustomerDataAPI/contacts/custom-query",
-                            "extraHeaders": {
-                                "content-type": "application/json"
+                            "path": "/CustomerDataAPI/contacts/basic-query",
+                            "queryParameters": {
+                                "lesseeCodes": "{lessee_codes}"
                             }
-                        },
-                        "body": {
-                            "paging": {
-                                "pageNumber": "1",
-                                "pageSize": "{page_size}"
-                            },
-                            "lesseeCodes": [
-                                "0EW0","0EY1"
-                            ]
                         },
                         "processing_options": {
                             "output_field": "items"
                         }
+                    },
+                    "contactsCreate": {
+                        "method": "post",
+                        "semantics": "create",
+                        "call": {
+                            "path": "/CustomerDataAPI/contacts/submit",
+                            "extraHeaders": {
+                                "content-type": "application/json"
+                            }
+                        },
+                        "body": [{
+                              "_nim_merge_attributes_":true
+                        }],
+                        "processing_options": {
+                            "output_field": "validatedRecords"
+                        },
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "contactFirstName",
+                            "contactLastName",
+                            "contactEmployeeId",
+                            "contactEmail",
+                            "contactCellPhone"
+                        ]
                     }
                 },
-                "key": "sys_id",
+                "key": "contactEmployeeId",
                 "resources": {
                     "city": "string*",
                     "contactActivationDate": "string*",
@@ -76,8 +90,162 @@
                     "languagePreference": "string*",
                     "lastChangeDate": "string*",
                     "lastChangeRecordId": "string*",
+                    "lesseeCode": "string",
                     "stateProvince": "string*",
                     "supervisorEmail": "string*",
+                    "zipPostalCode": "string*",
+                    "safety": {
+                        "lesseeCode": "_:string*",
+                        "division": "_:string*",
+                        "prefix": "_:string*",
+                        "clientData1": "_:string*",
+                        "clientData2": "_:string*",
+                        "clientData3": "_:string*",
+                        "clientData4": "_:string*",
+                        "clientData5": "_:string*",
+                        "clientData6": "_:string*",
+                        "clientData7": "_:string*",
+                        "auxData1": "_:string*",
+                        "auxData2": "_:string*",
+                        "auxData3": "_:string*",
+                        "auxData4": "_:string*",
+                        "auxData5": "_:string*",
+                        "auxData6": "_:string*",
+                        "auxData7": "_:string*",
+                        "auxData8": "_:string*",
+                        "auxData9": "_:string*",
+                        "auxData10": "_:string*",
+                        "auxData11": "_:string*",
+                        "auxData12": "_:string*",
+                        "auxData13": "_:string*",
+                        "auxData14": "_:string*",
+                        "excludeFromSafety": "_:string*",
+                        "safetyTermDate": "_:string*",
+                        "updateLegalName": "_:string*"
+                    },
+                    "inventory": {
+                        "lesseeCode": "_:string*",
+                        "holmanVehicleNumber": "_:string*",
+                        "clientVehicleNumber": "_:string*",
+                        "vin": "_:string*",
+                        "licensePlate": "_:string*",
+                        "grantDrvAppAccess": "_:string*",
+                        "syncDrvNameAndEmpId": "_:string*",
+                        "syncDrvPhoneAndEmail": "_:string*",
+                        "syncDrvAddress": "_:string*"
+                    }
+                }
+            },
+            "vehicles": {
+                "operations": {
+                    "contactsList": {
+                        "method": "get",
+                        "call": {
+                            "path": "/CustomerDataAPI/vehicles/basic-query",
+                            "queryParameters": {
+                                "lesseeCodes": "{lessee_codes}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "items"
+                        }
+                    }
+                },
+                "key": "holmanVehicleNumber",
+                "resources": {
+                    "addressLine1": "string*",
+                    "addressLine2": "string*",
+                    "addressLine3": "string*",
+                    "assetSubtype": "string*",
+                    "assetType": "string*",
+                    "assignedStatus": "string*",
+                    "auxData1": "string*",
+                    "auxData10": "string*",
+                    "auxData11": "string*",
+                    "auxData12": "string*",
+                    "auxData13": "string*",
+                    "auxData14": "string*",
+                    "auxData2": "string*",
+                    "auxData3": "string*",
+                    "auxData4": "string*",
+                    "auxData5": "string*",
+                    "auxData6": "string*",
+                    "auxData7": "string*",
+                    "auxData8": "string*",
+                    "auxData9": "string*",
+                    "auxDate1": "string*",
+                    "auxDate2": "string*",
+                    "auxDate3": "string*",
+                    "auxDate4": "string*",
+                    "capCost": "string*",
+                    "cellPhone": "string*",
+                    "city": "string*",
+                    "clientData1": "string*",
+                    "clientData2": "string*",
+                    "clientData3": "string*",
+                    "clientData4": "string*",
+                    "clientData5": "string*",
+                    "clientData6": "string*",
+                    "clientData7": "string*",
+                    "clientVehicleNumber": "string*",
+                    "curbWeight": "string*",
+                    "deliveryDate": "string*",
+                    "division": "string*",
+                    "driveline": "string*",
+                    "driverClass": "string*",
+                    "email": "string*",
+                    "engineType": "string*",
+                    "exec": "string*",
+                    "firstName": "string*",
+                    "fuelCapacity": "string*",
+                    "fuelMeasureType": "string*",
+                    "fuelType": "string*",
+                    "fuelTypeCode": "string*",
+                    "fuelTypeDescription": "string*",
+                    "gvwr": "string*",
+                    "holmanVehicleNumber": "string*",
+                    "homePhone": "string*",
+                    "hourMeter": "string*",
+                    "hourMeterDate": "string*",
+                    "lastChangeDate": "string*",
+                    "lastChangeRecordId": "string*",
+                    "lastName": "string*",
+                    "leaseTerm": "string*",
+                    "lesseeCode": "string*",
+                    "licensePlate": "string*",
+                    "makeClient": "string*",
+                    "makeVin": "string*",
+                    "modelClient": "string*",
+                    "modelVin": "string*",
+                    "modelYear": "string*",
+                    "monthsBilled": "string*",
+                    "monthsInService": "string*",
+                    "odometer": "string*",
+                    "odometerDate": "string*",
+                    "onRoadDate": "string*",
+                    "orderType": "string*",
+                    "outOfServiceDate": "string*",
+                    "plateType": "string*",
+                    "prefix": "string*",
+                    "registeredVehicleWeight": "string*",
+                    "remainingBookValue": "string*",
+                    "renewalDate": "string*",
+                    "saleOdometer": "string*",
+                    "series": "string*",
+                    "soldAmount": "string*",
+                    "soldDate": "string*",
+                    "stateProvince": "string*",
+                    "status": "string*",
+                    "statusCode": "string*",
+                    "tagStateProvince": "string*",
+                    "telematicsDeviceId": "string*",
+                    "telematicsDeviceModel": "string*",
+                    "telematicsDeviceVendor": "string*",
+                    "titleOwnerLessor": "string*",
+                    "vendor": "string*",
+                    "vin": "string*",
+                    "workPhone": "string*",
+                    "workPhoneExtension": "string*",
                     "zipPostalCode": "string*"
                 }
             }
@@ -87,6 +255,15 @@
         "config": {
             "baseUrl": "https://{tenant_id}",
             "get": {
+                "pagination": {
+                    "mode": "generic",
+                    "page_size": "{page_size}",
+                    "totalPageAttribute": "pageInfo.totalPages",
+                    "params": {
+                        "pageNumber": "{page_number}",
+                        "pageSize": "{page_size}"
+                    }
+                }
             },
             "authentication": "client_credentials",
             "call_handling": "generic",
@@ -140,11 +317,20 @@
                 "password": true,
                 "order": 3
             },
+             {
+                "name": "lessee_codes",
+                "type": "textbox",
+                "label": "Lessee Codes:",
+                "value": "",
+                "tooltip": "Comma delimited list of codes (e.g. 0EY1,0EY2 )",
+                "required": true,
+                "order": 100
+            },
             {
                 "name": "page_size",
                 "type": "textbox",
                 "label": "Page Size:",
-                "value": "50",
+                "value": "1000",
                 "required": true,
                 "order": 100
             }
