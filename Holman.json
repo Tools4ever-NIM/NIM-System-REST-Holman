@@ -1,0 +1,153 @@
+{
+    "schema": {
+        "crud_objects": {
+            "contacts": {
+                "operations": {
+                    "contactsList": {
+                        "method": "get",
+                        "verb": "post",
+                        "call": {
+                            "path": "/CustomerDataAPI/contacts/custom-query",
+                            "extraHeaders": {
+                                "content-type": "application/json"
+                            }
+                        },
+                        "body": {
+                            "paging": {
+                                "pageNumber": "1",
+                                "pageSize": "{page_size}"
+                            },
+                            "lesseeCodes": [
+                                "0EW0","0EY1"
+                            ]
+                        },
+                        "processing_options": {
+                            "output_field": "items"
+                        }
+                    }
+                },
+                "key": "sys_id",
+                "resources": {
+                    "city": "string*",
+                    "contactActivationDate": "string*",
+                    "contactAddress1": "string*",
+                    "contactAddress2": "string*",
+                    "contactAddress3": "string*",
+                    "contactAuxData1": "string*",
+                    "contactAuxData10": "string*",
+                    "contactAuxData11": "string*",
+                    "contactAuxData12": "string*",
+                    "contactAuxData13": "string*",
+                    "contactAuxData14": "string*",
+                    "contactAuxData2": "string*",
+                    "contactAuxData3": "string*",
+                    "contactAuxData4": "string*",
+                    "contactAuxData5": "string*",
+                    "contactAuxData6": "string*",
+                    "contactAuxData7": "string*",
+                    "contactAuxData8": "string*",
+                    "contactAuxData9": "string*",
+                    "contactAuxDate1": "string*",
+                    "contactAuxDate2": "string*",
+                    "contactAuxDate3": "string*",
+                    "contactAuxDate4": "string*",
+                    "contactCellAcceptsText": "string*",
+                    "contactCellPhone": "string*",
+                    "contactData1": "string*",
+                    "contactData3": "string*",
+                    "contactData4": "string*",
+                    "contactData5": "string*",
+                    "contactData6": "string*",
+                    "contactData7": "string*",
+                    "contactDeactivationDate": "string*",
+                    "contactEmail": "string*",
+                    "contactEmployeeId": "string*",
+                    "contactFirstName": "string*",
+                    "contactHireDate": "string*",
+                    "contactHomePhone": "string*",
+                    "contactLastName": "string*",
+                    "contactMiddleName": "string*",
+                    "contactStatus": "string*",
+                    "contactTerminationDate": "string*",
+                    "contactWorkPhone": "string*",
+                    "contactWorkPhoneExtension": "string*",
+                    "country": "string*",
+                    "county": "string*",
+                    "languagePreference": "string*",
+                    "lastChangeDate": "string*",
+                    "lastChangeRecordId": "string*",
+                    "stateProvince": "string*",
+                    "supervisorEmail": "string*",
+                    "zipPostalCode": "string*"
+                }
+            }
+        }
+    },
+    "rest": {
+        "config": {
+            "baseUrl": "https://{tenant_id}",
+            "get": {
+            },
+            "authentication": "client_credentials",
+            "call_handling": "generic",
+            "test_connection": {
+                "url": "/table/sys_user"
+            },
+            "socket_timeout": 3600000,
+            "accept": "application/json",
+            "retry": [
+                {
+                    "type": "statusCode",
+                    "statusCode": 429,
+                    "retry": {
+                        "type": "simple",
+                        "maxCount": 12,
+                        "waitTime": 60
+                    }
+                },
+                {
+                    "type": "connectionError"
+                }
+            ]
+        },
+        "authOptions": {
+            "type": "client-credentials",
+            "authUrl": "https://{tenant_id}/sso/sts/connect/token"
+        }
+    },
+    "connection": {
+        "items": [
+            {
+                "name": "tenant_id",
+                "type": "textbox",
+                "label": "Tenent URL:",
+                "value": "api.stg.holman.solutions",
+                "required": true,
+                "order": 1
+            },
+            {
+                "name": "client_id",
+                "type": "textbox",
+                "label": "Client ID",
+                "required": true,
+                "order": 2
+            },
+            {
+                "name": "client_secret",
+                "type": "textbox",
+                "label": "Client Secret",
+                "required": true,
+                "password": true,
+                "order": 3
+            },
+            {
+                "name": "page_size",
+                "type": "textbox",
+                "label": "Page Size:",
+                "value": "50",
+                "required": true,
+                "order": 100
+            }
+        ]
+    }
+}
