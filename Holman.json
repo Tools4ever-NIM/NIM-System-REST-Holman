@@ -138,7 +138,7 @@
             },
             "vehicles": {
                 "operations": {
-                    "contactsList": {
+                    "vehiclesList": {
                         "method": "get",
                         "call": {
                             "path": "/CustomerDataAPI/vehicles/basic-query",
