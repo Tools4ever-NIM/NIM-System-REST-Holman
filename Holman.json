@@ -268,7 +268,7 @@
             "authentication": "client_credentials",
             "call_handling": "generic",
             "test_connection": {
-                "url": "/table/sys_user"
+                "url": "/CustomerDataAPI/contacts/basic-query?lesseeCodes={lessee_codes}&pageNumber=1&pageSize=1"
             },
             "socket_timeout": 3600000,
             "accept": "application/json",
