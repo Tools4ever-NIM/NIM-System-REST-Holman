@@ -136,6 +136,260 @@
                     }
                 }
             },
+            "fuelPins": {
+                "operations": {
+                    "fuelPinsList": {
+                        "method": "get",
+                        "call": {
+                            "mode": "constant",
+                            "values": [
+                                {
+                                    "action": "DATA COLLECTION NOT AVAILABLE, TABLE IS A PLACEHOLDER FOR MAPPING ACTIONS",
+                                    "employeeId": "-",
+                                    "notifyDriver": "-",
+                                    "pin": "-",
+                                    "specialField": "-",
+                                    "wexAccountNumber": "-"
+                                }
+                            ]
+                        }
+                    },
+                    "fuelPinCreate": {
+                        "method": "post",
+                        "call": {
+                            "path": "/CustomerDataAPI/fuel/cards/pins/submit",
+                            "extraHeaders": {
+                                "content-type": "application/json"
+                            }
+                        },
+                        "body": [{
+                              "_nim_merge_attributes_":true,
+                              "action": 0
+                        }],
+                        "resource_allowance_default": "optional",
+                        "resource_prohibited": [
+                            "action"
+                        ],
+                        "resource_mandatory": [
+                            "action",
+                            "employeeId",
+                            "notifyDriver",
+                            "wexAccountNumber",
+                            "pin"
+                        ]
+                    },
+                    "fuelPinReactivate": {
+                        "method": "post",
+                        "call": {
+                            "path": "/CustomerDataAPI/fuel/cards/pins/submit",
+                            "extraHeaders": {
+                                "content-type": "application/json"
+                            }
+                        },
+                        "body": [{
+                              "_nim_merge_attributes_":true,
+                              "action": 3
+                        }],
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "employeeId",
+                            "notifyDriver",
+                            "wexAccountNumber"
+                        ]
+                    },
+                    "fuelPinTerminate": {
+                        "method": "post",
+                        "call": {
+                            "path": "/CustomerDataAPI/fuel/cards/pins/submit",
+                            "extraHeaders": {
+                                "content-type": "application/json"
+                            }
+                        },
+                        "body": [{
+                              "_nim_merge_attributes_":true,
+                              "action": 2
+                        }],
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "employeeId"
+                        ]
+                    }
+
+                },
+                "key": "employeeId",
+                "resources": {
+                    "action": "string*",
+                    "employeeId": "string*",
+                    "notifyDriver": "string*",
+                    "pin": "string*",
+                    "specialField": "string*",
+                    "wexAccountNumber": "string*"
+                }
+            },
+            "fuelTransactionsUS": {
+                "operations": {
+                    "fuelTransactionsUSList": {
+                        "method": "get",
+                        "call": {
+                            "path": "/CustomerDataAPI/fuel/transactions/US/basic-query",
+                            "queryParameters": {
+                                "lesseeCodes": "{lessee_codes}",
+                                "transactionLoadDateCode": "{fuel_Transaction_Load_Date_Code}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "items"
+                        }
+                    },
+                    "fuelTransactionsUSCreate": {
+                        "method": "post",
+                        "semantics": "create",
+                        "call": {
+                            "path": "/CustomerDataAPI/fuel/transactions/US/submit",
+                            "extraHeaders": {
+                                "content-type": "application/json"
+                            }
+                        },
+                        "body": [{
+                              "_nim_merge_attributes_":true
+                        }],
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "lesseeCode",
+                            "amount",
+                            "holmanVehicleNumber",
+                            "vendorName",
+                            "siteCity",
+                            "siteState",
+                            "siteZip",
+                            "transactionDate",
+                            "productCode",
+                            "gallons",
+                            "amount",
+                            "unitCost",
+                            "odometer"
+                        ]
+                    }
+                },
+                "key": "fuelUsRecordId",
+                "resources": {
+                    "amount": "string*",
+                    "auxData1": "string*",
+                    "auxData10": "string*",
+                    "auxData11": "string*",
+                    "auxData12": "string*",
+                    "auxData13": "string*",
+                    "auxData14": "string*",
+                    "auxData2": "string*",
+                    "auxData3": "string*",
+                    "auxData4": "string*",
+                    "auxData5": "string*",
+                    "auxData6": "string*",
+                    "auxData7": "string*",
+                    "auxData8": "string*",
+                    "auxData9": "string*",
+                    "auxDate1": "string*",
+                    "auxDate2": "string*",
+                    "auxDate3": "string*",
+                    "auxDate4": "string*",
+                    "clientData1": "string*",
+                    "clientData2": "string*",
+                    "clientData3": "string*",
+                    "clientData4": "string*",
+                    "clientData5": "string*",
+                    "clientData6": "string*",
+                    "clientData7": "string*",
+                    "clientVehicleNumber": "string*",
+                    "division": "string*",
+                    "driverClass": "string*",
+                    "driverFirstName": "string*",
+                    "driverFuelPin": "string*",
+                    "driverLastName": "string*",
+                    "exec": "string*",
+                    "fuelUsRecordId": "string*",
+                    "gallons": "string*",
+                    "holmanVehicleNumber": "string*",
+                    "lastChangeDate": "string*",
+                    "lastChangeRecordId": "string*",
+                    "lesseeCode": "string*",
+                    "odometer": "string*",
+                    "prefix": "string*",
+                    "productCode": "string*",
+                    "productName": "string*",
+                    "siteAddress": "string*",
+                    "siteCity": "string*",
+                    "siteName": "string*",
+                    "siteState": "string*",
+                    "siteZip": "string*",
+                    "transactionDate": "string*",
+                    "transactionLoadDate": "string*",
+                    "unitCost": "string*",
+                    "vendorName": "string*",
+                    "vin": "string*",
+                    "wexAccountNumber": "string*"
+                }
+            },
+            "safetyDrivers": {
+                "operations": {
+                    "safetyDriversList": {
+                        "method": "get",
+                        "pagination": "none",
+                        "call": {
+                            "path": "/CustomerDataAPI/safety/drivers/query",
+                            "queryParameters": {
+                                "safetyStatus": "ACTIVE"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": null
+                        }
+                    }
+                },
+                "key": "employeeId",
+                "resources": {
+                    "employeeId": "string*",
+                    "lastName": "string*",
+                    "firstName": "string*",
+                    "email": "string*",
+                    "driverType": "string*",
+                    "safetyStatus": "string*",
+                    "primaryDriverEmployeeId": "string*",
+                    "division": "string*",
+                    "prefix": "string*",
+                    "vehicleNumber": "string*",
+                    "clientData": "string*",
+                    "clientData3": "string*",
+                    "clientData4": "string*",
+                    "clientData5": "string*",
+                    "clientData6": "string*",
+                    "clientData7": "string*",
+                    "address1": "string*",
+                    "address2": "string*",
+                    "address3": "string*",
+                    "city": "string*",
+                    "state": "string*",
+                    "zipCode": "string*",
+                    "homePhone": "string*",
+                    "faxPhone": "string*",
+                    "safetyStartDate": "string*",
+                    "safetyEndDate": "string*",
+                    "auxData1": "string*",
+                    "auxData2": "string*",
+                    "auxData3": "string*",
+                    "auxData4": "string*",
+                    "auxData5": "string*",
+                    "auxData6": "string*",
+                    "auxData7": "string*",
+                    "auxData8": "string*",
+                    "auxData9": "string*",
+                    "auxData10": "string*",
+                    "auxData11": "string*",
+                    "auxData12": "string*",
+                    "auxData13": "string*",
+                    "auxData14": "string*"
+ 
+                }
+            },
             "vehicles": {
                 "operations": {
                     "vehiclesList": {
@@ -327,12 +581,21 @@
                 "order": 100
             },
             {
+                "name": "fuel_Transaction_Load_Date_Code",
+                "type": "textbox",
+                "label": "Fuel Transaction Load Date Code:",
+                "value": "6",
+                "tooltip": "1: Previous Day - 2: Previous Week - 3: Previous 30 days - 4: Previous 90 Days - 5: Previous 6 months - 6: Previous 12 months",
+                "required": true,
+                "order": 101
+            },
+            {
                 "name": "page_size",
                 "type": "textbox",
                 "label": "Page Size:",
                 "value": "1000",
                 "required": true,
-                "order": 100
+                "order": 102
             }
         ]
     }
